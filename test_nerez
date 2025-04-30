@@ -1,0 +1,47 @@
+
+query test_nerez($Id: Int) @cached {
+  Billing {
+    Applications(where: {Id: {_eq: $Id}}, limit: 1) {
+      Id
+      dtInput
+      AmountPurchaseOriginal
+      Applications_NBKI_NBKI_Response_V2 {
+        Max_overdue
+        Days_since_last_credit
+      }
+      Applications_NBKI_NBKI_RetailScorePV20_V2 {
+        score
+      }
+      Applications_Client_AdditionalInfo {
+        AverageMonthlyIncome
+      }
+      Applications_Organization {
+        SiteName
+      }
+      Applications_Client {
+        Sex
+        BirthDay
+        citizenshipId
+        martialId
+        dependents
+        Client_PassportNonResidences{DocType}
+      }
+			Applications_Equifax_Response_34_V2{
+        Nb_delays_90plus_ever
+        CH_length
+        S_hare_active_credit
+      }
+      Applications_Megafon_Responses {
+        LIFETIMEBINValueId
+        INTEGRALSCOREValueId
+      }
+      Applications_MailRuScoring_Requests {
+        MailRuScoring_Requests_Response {
+          Score
+          MatchingLevel
+        }
+      }
+    }
+  }
+}
+
