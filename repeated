@@ -1,0 +1,58 @@
+query repeated($AppId: Int) {
+  Billing {
+    ...client_data
+  }
+}
+
+fragment client_data on Billing_Billing_query {
+  Applications(where: {Id: {_eq: $AppId}}, limit: 1) {
+    AmountPurchaseOriginal
+    PInsurAmount
+    LInsurAmount
+    
+    
+    Applications_NBKI_NBKI_Response_V2 {
+      Total_active_accounts
+      Total_overdue_amount
+      Nb_delays_60_90_ever
+      Max_overdue
+      Nb_active_consumer_credit
+    }
+    Applications_NBKI_NBKI_RetailScorePV20_V2 {
+      score
+    }
+    Applications_Organization {
+      CreditPeriod
+      GracePeriod
+    }
+    Applications_DMS_Input_vector_bki {
+      Recent_inquiries
+      Max_overdue
+    }
+    Applications_Equifax_Response_34_V2 {
+      Nb_active_microcredits
+      Days_since_last_credit_
+      Nb_active_mortgages
+    }
+    Applications_input_vector_data {
+      Income
+      Loan_amount
+      Age
+      Liv_region
+      Work_region
+      Reg_region
+    }
+    Applications_Client_AdditionalInfo {
+      AverageMonthlyIncome
+    }
+    Applications_Client {
+      Sex
+    }
+    Applications_settingStocks {
+      Costs
+    }
+
+    }
+  }
+
+
