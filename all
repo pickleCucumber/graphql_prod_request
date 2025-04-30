@@ -1,0 +1,22 @@
+query  all ($Id: Int){
+  Billing{
+    Applications(
+      where: {Id:{
+        _eq: $Id
+      }},
+     limit: 1, 
+    )
+    {Id, AmountPurchaseOriginal, InitialFee, 
+      Applications_NBKI_NBKI_Response_V2{ Total_installment_amount, Total_accounts, Nb_delays_60_90_ever, RCC_credit_limit, Total_overdue_amount}, 
+      Applications_NBKI_NBKI_RetailScorePV20_V2 {
+      score
+    }, 
+      Applications_Client_AdditionalInfo{AverageMonthlyIncome}, 
+      Applications_Client{Sex, educationId}, 
+      Applications_DMS_Input_vector_bki{
+        Recent_inquiries, Max_overdue},  
+   Applications_input_vector_data{
+    Age
+  }
+  }
+  }}
